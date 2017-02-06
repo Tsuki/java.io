@@ -1,8 +1,6 @@
-var ObjectInputStream = require('../lib/input');
-var utils = require('./utils');
+const io = require('../lib');
+const ObjectInputStream = io.InputObjectStream
+const fs = require('fs');
 
-require('./fixtures/in/object/TestLargeData');
-
-var io3 = new ObjectInputStream(utils.bytes('object/data-1020'));
-var obj3 = io3.readObject();
-console.info(obj3);
+const ret = ObjectInputStream.read(fs.readFileSync('raw2.bin'));
+console.log(ret);
